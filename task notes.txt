@@ -1,0 +1,30 @@
+Task Pickr
+
+1> One page app 
+
+2> Create style sheet
+	- font family
+	- sizes
+	- colors
+	- bg
+
+3> Collect assets (icons, shapes, etc)
+	- buttons can be made in code
+	- backdrops (pink and sky)
+	- shapes can be done in code
+
+4> Login option to save tasks(future function)
+
+5> Two Rectangles holding tasks
+	- One row with two columns
+	- Each rectangle in a column
+
+6> Rectangles
+	- Transparent w/ border
+	- shadow on pink bg
+	- size in stylesheet
+	- rects and content stored in seperate divs
+
+7> Task
+
+8> Pickr
