@@ -27,4 +27,16 @@ Task Pickr
 
 7> Task
 
+	-Want to show blank area with enter
+	 text here as placeholder
+		- On load tasks are empty
+		- Blank areas with text placeholder are visible for first items 
+		- On click, user can type item
+		- Key event(Enter) a new blank area appears and trash icon appears on right of entered item
+	- Entries get stored in respective arrays
+		- if entered in HP, goes in HP array
+		- else LP
+
 8> Pickr
+	- On click of pick button, randomally pick a HP item from HP array and display on LGS list
+	- Also picks one item from LP list and displays under HP item

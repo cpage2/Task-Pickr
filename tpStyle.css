@@ -1,0 +1,33 @@
+/* Background */
+
+/* Menu & Title */
+.nav{
+    padding: 0;
+    justify-content: end;
+  
+}
+
+#login a{
+   text-decoration: none;
+}
+
+#tpName{
+    margin: 0 auto;
+}
+
+
+/* Cards */
+.col{
+    text-align: center; 
+    padding: 0;
+   
+}
+
+.line{
+    height: 1px;
+    background: rgb(144, 144, 144);
+}
+.card{
+    margin: 0 auto;
+}
+

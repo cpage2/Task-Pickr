@@ -10,17 +10,23 @@
 </head>
 <body>
 
-    <nav class="nav">
-        <p id="logo">Task Pickr</p>
-       <a href="" id="lg">Login</a>
-    </nav>
+   
+
+   <div class="container">
+    <ul class="nav">
+        <li id="tpName"><p id="logo">Task Pickr</p></li>
+        <li id="login"><a href="" id="lg">Login</a></li>
+       
+    </ul>
+
+   </div>
     
 
 
-    <div class="taskDisplay">
-        <div class="row justisfy-content-center">
-            <!-- Task input section -->
-            <div class="col-6">
+    <div class="container">
+        <div class="row "  >
+            <!-- Task List -->
+            <div class="col" >
                 <div class="card "style="width: 18rem;">
 
                     <div class="highPriority">
@@ -28,17 +34,18 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">An item</li>
                             <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
+                           
                           </ul>
                         
                     </div>
+
+                    <div class="line"></div>
 
                     <div class="lowPriority">
                         <h5 class="card-title">Low Priority</h5>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
+                           
                           </ul>
                         
                     </div>
@@ -48,15 +55,20 @@
 
             </div>
 
+            <div class="col">
+
+                <button type="button" class="pick">Pick</button>
+            </div>
+
 
             
             <!-- Pickr portion -->
-            <div class="col-6">
+            <div class="col">
                 <div class="card" style="width: 18rem;">
                     <h5 class="card-title">Let's Start With:</h5>
                     <ul class="pickedTasks">
-                        <li>Stand in</li>
-                        <li>Stand in</li>
+                        <li id="item1">N/A</li>
+                        <li id="item2">N/A</li>
                     </ul>
 
                     
