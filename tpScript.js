@@ -11,7 +11,9 @@ const hpItem = document.querySelector('#hpTask');//list item
 const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
 
-
+const chBox = document.createElement('i');
+chBox.innerHTML = '<i class="fa-li fa fa-square"></i>';
+chBox.className = 'fa-li fa fa-square';
 
 
 hpItem.addEventListener("keypress", (e)=>{
