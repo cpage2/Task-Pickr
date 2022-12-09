@@ -17,6 +17,10 @@
 
 
 /* Cards */
+#hpTask li{
+    list-style: none;
+}
+
 .col{
     text-align: center; 
     padding: 0;
