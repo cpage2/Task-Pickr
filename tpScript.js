@@ -2,9 +2,7 @@
 
 const hpArray = []; //high priority tasks
 const lpArray = []; // low priority tasks
-const trash = document.createElement('i');
-trash.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
-trash.className = 'fa-solid fa-trash-can';
+
 
 
 const hpInput = document.querySelector('#hp'); // hp input value
@@ -26,6 +24,7 @@ hpItem.addEventListener("keypress", (e)=>{
         
         newHPItem.innerHTML = hpInput.value;
         hpItem.appendChild(newHPItem);//adds new list item to ul
+       
         
        
         // Add input to HP Array
@@ -59,8 +58,6 @@ lpItem.addEventListener("keypress", (e)=>{
        
         lpInput.value = "";//resets input value
         
-
-
     }
 }
 
@@ -85,9 +82,28 @@ pickButton.addEventListener('click',(e)=>{
 
     const item1 = document.querySelector('#item1');//li item 1
     const item2 = document.querySelector('#item2');// list item 2
+    const exclaim = document.createElement('img');
+    exclaim.setAttribute('src','exclaim.png')
 
-    item1.innerHTML = hpPick + ' !';
-    item2.innerHTML = lpPick;
+    exclaim.style.width = '7%';
+
+
+    if(hpPick != undefined ){
+        item1.innerHTML = hpPick + '   ' ;
+        item1.appendChild(exclaim);
+
+
+    }else{
+        item1.innerHTML = "N/A";
+    }
+
+    if(lpPick != undefined){
+        item2.innerHTML = lpPick;
+    }else{
+        item2.innerHTML = "N/A"
+    }
+     
+    
 
    
 
