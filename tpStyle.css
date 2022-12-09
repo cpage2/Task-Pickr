@@ -31,3 +31,7 @@
     margin: 0 auto;
 }
 
+
+#hpTask input, #lpTask input{
+    border: none;
+}

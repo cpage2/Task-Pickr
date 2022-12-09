@@ -31,10 +31,8 @@
 
                     <div class="highPriority">
                         <h5 class="card-title">High Priority</h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                           
+                        <ul class="list-group list-group-flush" id="hpList">
+                            <li class="list-group-item" id="hpTask"><input type="text" id= "hp" placeholder="Enter task"></li>
                           </ul>
                         
                     </div>
@@ -44,7 +42,7 @@
                     <div class="lowPriority">
                         <h5 class="card-title">Low Priority</h5>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item" id="lpTask"><input type="text"  id = "lp" placeholder="Enter task"></li>
                            
                           </ul>
                         
@@ -54,7 +52,7 @@
                 </div>
 
             </div>
-
+            <!-- Pick buttton -->
             <div class="col">
 
                 <button type="button" class="pick">Pick</button>
