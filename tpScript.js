@@ -11,9 +11,6 @@ const hpItem = document.querySelector('#hpTask');//list item
 const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
 
-const chBox = document.createElement('i');
-chBox.innerHTML = '<i class="fa-li fa fa-square"></i>';
-chBox.className = 'fa-li fa fa-square';
 
 
 hpItem.addEventListener("keypress", (e)=>{
@@ -21,16 +18,36 @@ hpItem.addEventListener("keypress", (e)=>{
         // Display text
         // Add new li/input item with trash icon
         // then new event onclick for ticon
+
+        // let ul = document.querySelector('#hpList');
+        let HpList = document.querySelector('.highPriority');
         
-        let newHPItem = document.createElement("li");
+        let label = document.createElement("label");
+
+        let newListItem  = document.createElement('li');
+        newListItem.className = 'list-group-item';
+
+        let toDoListItem  = document.createElement('input');
+        toDoListItem.className = 'form-check-input me-1';
+        toDoListItem.type = 'checkbox';
+        toDoListItem.value = "";
+        toDoListItem.id = 'id';
+
+
+        label.htmlFor = 'id';
         
-        newHPItem.innerHTML = hpInput.value;
-        hpItem.appendChild(newHPItem);//adds new list item to ul
+         label.appendChild(document.createTextNode(hpInput.value));
+      
+        newListItem.appendChild(toDoListItem);
+        newListItem.appendChild(label);//adds new list item to ul
+
+        HpList.appendChild(newListItem);
        
-        
-       
+      
         // Add input to HP Array
         hpArray.push(hpInput.value);
+
+       
 
        
         hpInput.value = "";//resets input value

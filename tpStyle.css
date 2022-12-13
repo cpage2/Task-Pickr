@@ -17,9 +17,13 @@
 
 
 /* Cards */
-#hpTask li{
+.list-group-item{
+  
     list-style: none;
-}
+      
+} 
+
+
 
 .col{
     text-align: center; 
