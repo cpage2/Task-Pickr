@@ -9,20 +9,14 @@ const hpItem = document.querySelector('#hpTask');//list item
 const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
 
-
 const ulH = document.createElement('ul');//new ul to host tasks
-
-// const chBoxFilled = document.createElement('img');
-// chBoxFilled.setAttribute('src', 'CheckboxFill.png');
-// chBoxFilled.style.width = '10%';
-
-
 
 hpItem.addEventListener("keypress", (e)=>{
     if(e.key === "Enter"){
         // Display text
         // Add new li/input item with checkbox
         // then new event onclick for cBox
+
         let chBox = document.createElement('img');
         chBox.setAttribute('src', 'ChBox.png');
         chBox.style.width = '8%';
@@ -55,17 +49,27 @@ hpItem.addEventListener("keypress", (e)=>{
        
         hpInput.value = "";//resets input value
         
-
-      
-        
-
+        // add ids to list items
        for(let i = 1; i <= hpArray.length; i++){
             newListItem.id = `hp${i}`;
-            chBox.id = `chbox${i}`;
+            chBox.id = `chbox${i}`; 
+
+            let clickedBox = document.querySelector(`#chbox${i}`);
+            let listItem  = document.querySelector(`#hp${i}`);
+
+            clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
+                clickedBox.setAttribute('src','CheckboxFill.png');
+                // Delayed remove of list item
+                setTimeout(()=>{
+                    listItem.remove();
+                },'2000')
+                
+            })
 
        }
 
 
+     
 
 
     }
