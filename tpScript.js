@@ -3,8 +3,6 @@
 const hpArray = []; //high priority tasks
 const lpArray = []; // low priority tasks
 
-
-
 const hpInput = document.querySelector('#hp'); // hp input value
 const hpItem = document.querySelector('#hpTask');//list item
 
@@ -12,46 +10,62 @@ const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
 
 
+const ulH = document.createElement('ul');//new ul to host tasks
+
+// const chBoxFilled = document.createElement('img');
+// chBoxFilled.setAttribute('src', 'CheckboxFill.png');
+// chBoxFilled.style.width = '10%';
+
+
 
 hpItem.addEventListener("keypress", (e)=>{
     if(e.key === "Enter"){
         // Display text
-        // Add new li/input item with trash icon
-        // then new event onclick for ticon
+        // Add new li/input item with checkbox
+        // then new event onclick for cBox
+        let chBox = document.createElement('img');
+        chBox.setAttribute('src', 'ChBox.png');
+        chBox.style.width = '8%';
 
-        // let ul = document.querySelector('#hpList');
-        let HpList = document.querySelector('.highPriority');
+        let chBoxFilled = document.createElement('img');
+        chBoxFilled.setAttribute('src', 'CheckboxFill.png');
+        chBoxFilled.style.width = '8%';
         
-        let label = document.createElement("label");
+        let HpList = document.querySelector('.highPriority');//div
+        
+        let label = document.createElement('label');
 
         let newListItem  = document.createElement('li');
         newListItem.className = 'list-group-item';
 
-        let toDoListItem  = document.createElement('input');
-        toDoListItem.className = 'form-check-input me-1';
-        toDoListItem.type = 'checkbox';
-        toDoListItem.value = "";
-        toDoListItem.id = 'id';
-
-
-        label.htmlFor = 'id';
-        
-         label.appendChild(document.createTextNode(hpInput.value));
       
-        newListItem.appendChild(toDoListItem);
+        label.innerHTML = hpInput.value;       
+      
+        newListItem.append(chBox);
         newListItem.appendChild(label);//adds new list item to ul
 
-        HpList.appendChild(newListItem);
-       
+        
+
+        HpList.appendChild(ulH);
+        ulH.appendChild(newListItem);
+
       
         // Add input to HP Array
         hpArray.push(hpInput.value);
-
-       
-
        
         hpInput.value = "";//resets input value
         
+
+      
+        
+
+       for(let i = 1; i <= hpArray.length; i++){
+            newListItem.id = `hp${i}`;
+            chBox.id = `chbox${i}`;
+
+       }
+
+
 
 
     }
