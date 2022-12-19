@@ -1,5 +1,3 @@
-// Create variables
-
 const hpArray = []; //high priority tasks
 const lpArray = []; // low priority tasks
 
@@ -10,6 +8,41 @@ const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
 
 const ulH = document.createElement('ul');//new ul to host tasks
+
+
+
+function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes to be deleted 
+    for(let i = 1; i <= a.length; i++){
+        b.id = `task${i}`;
+        c.id = `chbox${i}`;
+        d.id = `lb${i}`; 
+
+        let clickedBox = document.querySelector(`div.${hiLow} #chbox${i}`);
+        let listItem  = document.querySelector(`div.${hiLow} #task${i}`);
+        let label = document.querySelector(`div.${hiLow} #lb${i}`);
+
+
+        clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
+            clickedBox.setAttribute('src','CheckboxFill.png');
+
+            // Delayed remove of list item
+            setTimeout(()=>{
+                
+                a.splice(a.indexOf(label.innerHTML),1);
+                listItem.remove();
+                
+                
+            },'1000')
+            
+        })
+
+       
+   }
+
+ 
+
+      
+}
 
 hpItem.addEventListener("keypress", (e)=>{
     if(e.key === "Enter"){
@@ -45,31 +78,14 @@ hpItem.addEventListener("keypress", (e)=>{
 
       
         // Add input to HP Array
-        hpArray.push(hpInput.value);
+        hpArray.push(label.innerHTML);
        
         hpInput.value = "";//resets input value
         
+        let hpClassName = 'highPriority';//used to differentiate between high or low tasks
         // add ids to list items
-       for(let i = 1; i <= hpArray.length; i++){
-            newListItem.id = `hp${i}`;
-            chBox.id = `chbox${i}`; 
+         IDsChecks(hpArray,newListItem,chBox,label,hpClassName);
 
-            let clickedBox = document.querySelector(`#chbox${i}`);
-            let listItem  = document.querySelector(`#hp${i}`);
-
-            clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
-                clickedBox.setAttribute('src','CheckboxFill.png');
-                // Delayed remove of list item
-                setTimeout(()=>{
-                    listItem.remove();
-                },'2000')
-                
-            })
-
-       }
-
-
-     
 
 
     }
