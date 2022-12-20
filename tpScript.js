@@ -1,4 +1,4 @@
-const hpArray = []; //high priority tasks
+let hpArray = []; //high priority tasks
 const lpArray = []; // low priority tasks
 
 const hpInput = document.querySelector('#hp'); // hp input value
@@ -12,6 +12,7 @@ const ulH = document.createElement('ul');//new ul to host tasks
 
 
 function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes to be deleted 
+   
     for(let i = 1; i <= a.length; i++){
         b.id = `task${i}`;
         c.id = `chbox${i}`;
@@ -28,20 +29,21 @@ function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes
             // Delayed remove of list item
             setTimeout(()=>{
                 
-                a.splice(a.indexOf(label.innerHTML),1);
-                listItem.remove();
                 
+                listItem.remove();
+              
+                
+                a.splice(a.indexOf(label.innerHTML), 1);
+
+                   
                 
             },'1000')
             
-        })
+        })  
 
-       
+        
    }
-
- 
-
-      
+   
 }
 
 hpItem.addEventListener("keypress", (e)=>{
@@ -84,14 +86,20 @@ hpItem.addEventListener("keypress", (e)=>{
         
         let hpClassName = 'highPriority';//used to differentiate between high or low tasks
         // add ids to list items
-         IDsChecks(hpArray,newListItem,chBox,label,hpClassName);
+        IDsChecks(hpArray,newListItem,chBox,label,hpClassName);
 
+       
+       
 
-
+   
     }
 }
 
+
 )
+
+
+
 
 lpItem.addEventListener("keypress", (e)=>{
     if(e.key === "Enter"){
