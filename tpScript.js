@@ -48,6 +48,9 @@ function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes
 
 hpItem.addEventListener("keypress", (e)=>{
     if(e.key === "Enter"){
+
+// This cn be moved to a function
+
         // Display text
         // Add new li/input item with checkbox
         // then new event onclick for cBox
