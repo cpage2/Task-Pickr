@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="tpStyle.css">
     <title>Task Pickr</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">   
 </head>
 <body>
 
@@ -15,8 +15,8 @@
 
    <div class="container">
     <ul class="nav">
-        <li id="tpName"><p id="logo">Task Pickr</p></li>
-        <li id="login"><a href="" id="lg">Login</a></li>
+        <li id="tpName"><p id="logo">TASK PICKR</p></li>
+        <li id="login"><a href="" id="lg"><button id="loginB">Login</button></a></li>
        
     </ul>
 
@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row "  >
             <!-- Task List -->
-            <div class="col" >
+            <div class="col" id="taskCol" >
                 <div class="card "style="width: 18rem;">
 
                   <div class="card-body">
@@ -56,15 +56,14 @@
 
             </div>
             <!-- Pick buttton -->
-            <div class="col">
-
-                <button type="button" class="pick">Pick</button>
+            <div class="col" id="buttonCol">
+                <button type="button" class="pick">pick</button>
             </div>
 
 
             
             <!-- Pickr portion -->
-            <div class="col">
+            <div class="col" id="pickedCol">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">Let's Start With:</h5>

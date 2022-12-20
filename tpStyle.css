@@ -9,15 +9,43 @@ body{
 .nav{
     padding: 0;
     justify-content: end;
+    margin-bottom: 20px !important;
   
+}
+
+#login{
+    margin-top: 5px;
 }
 
 #login a{
    text-decoration: none;
+   
 }
+
+#loginB{
+
+    background-color:rgba(167, 254, 255, 0.8);
+    border-radius: 6px;
+    padding: 1px 8px 4px 8px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.15);
+}
+
+
 
 #tpName{
     margin: 0 auto;
+}
+
+#logo{
+    font-family:'Fredoka One', cursive;
+    font-size: 36px;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 5px 5px 5px #02020254;
 }
 
 
@@ -25,13 +53,20 @@ body{
 
 .card{
     --bs-card-bg: transparent !important;
+    --bs-card-border-color: transparent !important;
+    margin:0 auto;
+   
+}
+
+.card-body{
+    border-radius: 20px;
 }
 
 .card-body, .list-group list-group-flush{
     background-color:  rgba(75, 75, 75, 0.432)!important;
-    
-
 }
+
+
 input{
     background-color: transparent;
 }
@@ -39,26 +74,44 @@ input{
 #hpTask, #lpTask{
     background-color: transparent;
 }
+
+
 li .list-group-item{
     /* background-color: transparent; */
     list-style: none;
       
 } 
 
+.pick{
+    background-color:rgba(167, 254, 255, 0.8);
+    border-radius: 6px;
+    padding: 1px 8px 4px 8px;
+    font-weight: 700;
+    color: white;
+    border: none;
+    box-shadow: 5px 5px 10px 2px rgba(0,0,0,.15);
+    font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    
 
+}
 
-.col{
+ #buttonCol , #pickedCol{
     text-align: center; 
     padding: 0;
    
 }
 
+
+
 .line{
     height: 1px;
-    background: rgb(144, 144, 144);
+    background: rgba(167, 254, 255, 0.8);
 }
-.card{
-    margin: 0 auto;
+
+.card-title{
+
 }
 
 
