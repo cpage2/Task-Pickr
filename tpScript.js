@@ -1,5 +1,5 @@
 let hpArray = []; //high priority tasks
-const lpArray = []; // low priority tasks
+let lpArray = []; // low priority tasks
 
 const hpInput = document.querySelector('#hp'); // hp input value
 const hpItem = document.querySelector('#hpTask');//list item
@@ -7,128 +7,30 @@ const hpItem = document.querySelector('#hpTask');//list item
 const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
 
-const ulH = document.createElement('ul');//new ul to host tasks
 
-
-
-function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes to be deleted 
-   
-    for(let i = 1; i <= a.length; i++){
-        b.id = `task${i}`;
-        c.id = `chbox${i}`;
-        d.id = `lb${i}`; 
-
-        let clickedBox = document.querySelector(`div.${hiLow} #chbox${i}`);
-        let listItem  = document.querySelector(`div.${hiLow} #task${i}`);
-        let label = document.querySelector(`div.${hiLow} #lb${i}`);
-
-
-        clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
-            clickedBox.setAttribute('src','CheckboxFill.png');
-
-            // Delayed remove of list item
-            setTimeout(()=>{
-                
-                
-                listItem.remove();
-              
-                
-                a.splice(a.indexOf(label.innerHTML), 1);
-
-                   
-                
-            },'1000')
-            
-        })  
-
-        
-   }
-   
-}
-
+// On enter of task, starts functions
 hpItem.addEventListener("keypress", (e)=>{
     if(e.key === "Enter"){
 
-// This cn be moved to a function
+        createList('highPriority',hpInput,hpArray);
 
-        // Display text
-        // Add new li/input item with checkbox
-        // then new event onclick for cBox
-
-        let chBox = document.createElement('img');
-        chBox.setAttribute('src', 'ChBox.png');
-        chBox.style.width = '8%';
-
-        let chBoxFilled = document.createElement('img');
-        chBoxFilled.setAttribute('src', 'CheckboxFill.png');
-        chBoxFilled.style.width = '8%';
-        
-        let HpList = document.querySelector('.highPriority');//div
-        
-        let label = document.createElement('label');
-
-        let newListItem  = document.createElement('li');
-        newListItem.className = 'list-group-item';
-
-      
-        label.innerHTML = hpInput.value;       
-      
-        newListItem.append(chBox);
-        newListItem.appendChild(label);//adds new list item to ul
-
-        
-
-        HpList.appendChild(ulH);
-        ulH.appendChild(newListItem);
-
-      
-        // Add input to HP Array
-        hpArray.push(label.innerHTML);
-       
-        hpInput.value = "";//resets input value
-        
-        let hpClassName = 'highPriority';//used to differentiate between high or low tasks
-        // add ids to list items
-        IDsChecks(hpArray,newListItem,chBox,label,hpClassName);
-
-       
-       
-
-   
     }
 }
 
-
 )
 
+lpItem.addEventListener("keypress", (f)=>{
+    if(f.key === "Enter"){
 
-
-
-lpItem.addEventListener("keypress", (e)=>{
-    if(e.key === "Enter"){
-        // Display text
-        // Add new li/input item with trash icon
-        // then new event onclick for ticon
-        
-        let newLPItem = document.createElement("li");
-        
-        newLPItem.innerHTML = lpInput.value;
-        lpItem.appendChild(newLPItem);//adds new list item to ul
-        
-       
-        // Add input to HP Array
-        lpArray.push(lpInput.value);
-
-       
-        lpInput.value = "";//resets input value
-        
+        createList('lowPriority',lpInput,lpArray);
+         
     }
 }
 
 )
 
 
-// Pickr
+// Pickr Button
 
 const pickButton = document.querySelector('.pick');
 
@@ -156,7 +58,6 @@ pickButton.addEventListener('click',(e)=>{
         item1.innerHTML = hpPick + '   ' ;
         item1.appendChild(exclaim);
 
-
     }else{
         item1.innerHTML = "N/A";
     }
@@ -173,3 +74,73 @@ pickButton.addEventListener('click',(e)=>{
 
 
 })
+
+
+// functions for list creation and deletion
+function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes & delete functioning 
+   
+    for(let i = 1; i <= a.length; i++){
+        b.id = `task${i}`;
+        c.id = `chbox${i}`;
+        d.id = `lb${i}`; 
+
+        let clickedBox = document.querySelector(`div.${hiLow} #chbox${i}`);
+        let listItem  = document.querySelector(`div.${hiLow} #task${i}`);
+        let label = document.querySelector(`div.${hiLow} #lb${i}`);
+
+
+        clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
+            clickedBox.setAttribute('src','CheckboxFill.png');
+
+            // Delayed remove of list item
+            setTimeout(()=>{ 
+                listItem.remove(); 
+                a.splice(a.indexOf(label.innerHTML), 1);
+                
+            },'1000')
+            
+        })  
+
+        
+   }
+   
+}
+
+function createList(listName,inputName,arrayName){
+    let chBox = document.createElement('img');
+    chBox.setAttribute('src', 'ChBox.png');
+    chBox.style.width = '8%';
+
+    let chBoxFilled = document.createElement('img');
+    chBoxFilled.setAttribute('src', 'CheckboxFill.png');
+    chBoxFilled.style.width = '8%';
+    
+    let List = document.querySelector(`div.${listName}`);//div
+    
+    let label = document.createElement('label');
+
+    let newListItem  = document.createElement('li');
+    newListItem.className = 'list-group-item';
+    newListItem.id = listName;
+  
+    label.innerHTML = inputName.value;       
+  
+    newListItem.append(chBox);
+    newListItem.appendChild(label);//adds new list item to ul
+
+    
+    List.appendChild(newListItem);
+    
+    // Add input to Array
+    arrayName.push(label.innerHTML);
+   
+    inputName.value = "";//resets input value
+    
+    // let className = listName;//used to differentiate between high or low tasks
+
+     IDsChecks(arrayName,newListItem,chBox,label,listName);
+
+}
+
+
+

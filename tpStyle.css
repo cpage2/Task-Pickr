@@ -109,11 +109,16 @@ li .list-group-item{
    
 }
 
+#buttonCol button{
+    margin-right:35px;
+}
+
 
 
 .line{
     height: 4px;
     background:rgba(255, 171, 197, 0.7);
+    margin-top: 10px;
 }
 
 .card-title{
