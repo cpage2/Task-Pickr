@@ -68,12 +68,9 @@ pickButton.addEventListener('click',(e)=>{
         item2.innerHTML = "N/A"
     }
      
-    
-
-   
-
 
 })
+
 
 
 // functions for list creation and deletion
@@ -94,8 +91,14 @@ function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes
 
             // Delayed remove of list item
             setTimeout(()=>{ 
-                listItem.remove(); 
-                a.splice(a.indexOf(label.innerHTML), 1);
+                listItem.remove();
+
+                for(let j = 0; j >= a.length; i--){
+                     
+                    a.splice(a.indexOf(label.innerHTML), 1);
+
+                }
+               
                 
             },'1000')
             
