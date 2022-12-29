@@ -1,18 +1,23 @@
-let hpArray = []; //high priority tasks
-let lpArray = []; // low priority tasks
+var hpArray = []; //high priority tasks
+var lpArray = []; // low priority tasks
 
 const hpInput = document.querySelector('#hp'); // hp input value
 const hpItem = document.querySelector('#hpTask');//list item
 
 const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
+let task = '';
+
 
 
 // On enter of task, starts functions
 hpItem.addEventListener("keypress", (e)=>{
     if(e.key === "Enter"){
 
-        createList('highPriority',hpInput,hpArray);
+       createList('highPriority',hpInput,hpArray);
+        
+       
+        
 
     }
 }
@@ -74,40 +79,72 @@ pickButton.addEventListener('click',(e)=>{
 
 
 // functions for list creation and deletion
-function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes & delete functioning 
-   
-    for(let i = 1; i <= a.length; i++){
-        b.id = `task${i}`;
-        c.id = `chbox${i}`;
-        d.id = `lb${i}`; 
 
-        let clickedBox = document.querySelector(`div.${hiLow} #chbox${i}`);
-        let listItem  = document.querySelector(`div.${hiLow} #task${i}`);
-        let label = document.querySelector(`div.${hiLow} #lb${i}`);
+ function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes & delete functioning 
+
+     for(let i = 1; i <= a.length; i++){
+         b.id = `task${i}`;
+         c.id = `chbox${i}`;
+         d.id = `lb${i}`; 
+        
+        }
 
 
-        clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
-            clickedBox.setAttribute('src','CheckboxFill.png');
+     for(let i = 0; i < a.length; i++){
 
-            // Delayed remove of list item
-            setTimeout(()=>{ 
-                listItem.remove();
+        let clickedBox = document.querySelector(`div.${hiLow} #chbox${i+1}`);
+        let listItem  = document.querySelector(`div.${hiLow} #task${i+1}`);
+        let label = document.querySelector(`div.${hiLow} #lb${i+1}`);
 
-                for(let j = 0; j >= a.length; i--){
-                     
-                    a.splice(a.indexOf(label.innerHTML), 1);
-
-                }
-               
+        if(clickedBox != undefined || clickedBox != null){
+            clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
+                clickedBox.setAttribute('src','CheckboxFill.png');
+    
+                // Delayed remove of list item
+                 setTimeout(()=>{ 
+                    listItem.remove();
+                    task = label.innerHTML;
+                    let tempArr = a.filter(item => item !== task);
+    
+                    
+                    a.length = tempArr.length;
+                    a[i] = tempArr[i];
+                    
+                    tempArr = [0] ;
+                    // console.log(a);
+                    //  a = a.filter(item => item != undefined);
+    
+                    
+    
+                    i--; //to keep from deleting more than one item
+    
+                   
+                },'1000')
                 
-            },'1000')
-            
-        })  
+                
+               
+             })  
+
+
+        }else{
+            clickedBox = document.querySelector(`div.${hiLow} #chbox${i+1}`);
+        }
+
+        
 
         
    }
+
+   //once clicked event happens delete from array
+
    
-}
+   
+
+   
+ }
+
+
+ 
 
 function createList(listName,inputName,arrayName){
     let chBox = document.createElement('img');
@@ -138,7 +175,7 @@ function createList(listName,inputName,arrayName){
     arrayName.push(label.innerHTML);
    
     inputName.value = "";//resets input value
-    
+    // this.tempArr = tempArr;
     // let className = listName;//used to differentiate between high or low tasks
 
      IDsChecks(arrayName,newListItem,chBox,label,listName);
