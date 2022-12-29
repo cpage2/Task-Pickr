@@ -14,10 +14,7 @@ let task = '';
 hpItem.addEventListener("keypress", (e)=>{
     if(e.key === "Enter"){
 
-       createList('highPriority',hpInput,hpArray);
-        
-       
-        
+       createList('highPriority',hpInput,hpArray);   
 
     }
 }
@@ -104,22 +101,35 @@ pickButton.addEventListener('click',(e)=>{
                  setTimeout(()=>{ 
                     listItem.remove();
                     task = label.innerHTML;
-                    let tempArr = a.filter(item => item !== task);
+
+                     
+
+                        let tempArr = a.filter(item => item !== task);
     
                     
-                    a.length = tempArr.length; //resets a 
-                    a[i] = tempArr[i];
+                        a.length = tempArr.length; //resets a 
+                        a[i] = tempArr[i];
+                        
+                        tempArr.length = 0 ;//reset temp Array length
+
+                        if(a[i] == undefined){
+                            let aNew = a.filter(function(x){ //new array to remove any undefined slots after deletion
+                                return x != undefined;
+                            })
+        
+                            a[i] = aNew[i]; //replaces og Array with temp array sans "undefined"
+
+
+                        }
                     
-                    tempArr.length = 0 ;//reset temp Array length
-                
-                    let aNew = a.filter(function(x){ //new array to remove any undefined slots after deletion
-                        return x !== undefined;
-                    })
-
-                    a[i] = aNew[i]; //replaces og Array with temp array sans "undefined"
-
-                    i--; //to keep from deleting more than one item
+                       
     
+    
+    
+                        
+
+                  
+                     i--;//to keep from deleting more than one item
                    
                 },'1000')
                 
