@@ -129,17 +129,13 @@ pickButton.addEventListener('click',(e)=>{
 
 
         }else{
-            clickedBox = document.querySelector(`div.${hiLow} #chbox${i+1}`);
+            clickedBox = document.querySelector(`div.${hiLow} #chbox${i+1}`); //relabels ids if they become undefined after deletion
         }
     
    }
 
-  
-   
  }
 
-
- 
 
 function createList(listName,inputName,arrayName){
     let chBox = document.createElement('img');
@@ -170,8 +166,6 @@ function createList(listName,inputName,arrayName){
     arrayName.push(label.innerHTML);
    
     inputName.value = "";//resets input value
-    // this.tempArr = tempArr;
-    // let className = listName;//used to differentiate between high or low tasks
 
      IDsChecks(arrayName,newListItem,chBox,label,listName);
 
