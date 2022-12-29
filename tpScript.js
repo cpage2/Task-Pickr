@@ -107,15 +107,17 @@ pickButton.addEventListener('click',(e)=>{
                     let tempArr = a.filter(item => item !== task);
     
                     
-                    a.length = tempArr.length;
+                    a.length = tempArr.length; //resets a 
                     a[i] = tempArr[i];
                     
-                    tempArr = [0] ;
-                    // console.log(a);
-                    //  a = a.filter(item => item != undefined);
-    
-                    
-    
+                    tempArr.length = 0 ;//reset temp Array length
+                
+                    let aNew = a.filter(function(x){ //new array to remove any undefined slots after deletion
+                        return x !== undefined;
+                    })
+
+                    a[i] = aNew[i]; //replaces og Array with temp array sans "undefined"
+
                     i--; //to keep from deleting more than one item
     
                    
@@ -129,17 +131,10 @@ pickButton.addEventListener('click',(e)=>{
         }else{
             clickedBox = document.querySelector(`div.${hiLow} #chbox${i+1}`);
         }
-
-        
-
-        
+    
    }
 
-   //once clicked event happens delete from array
-
-   
-   
-
+  
    
  }
 
