@@ -102,35 +102,14 @@ pickButton.addEventListener('click',(e)=>{
                     listItem.remove();
                     task = label.innerHTML;
 
-                     
-
                         let tempArr = a.filter(item => item !== task);
     
-                    
-                        a.length = tempArr.length; //resets a 
-                        a[i] = tempArr[i];
-                        
-                        tempArr.length = 0 ;//reset temp Array length
-
-                        if(a[i] == undefined){
-                            let aNew = a.filter(function(x){ //new array to remove any undefined slots after deletion
-                                return x != undefined;
-                            })
-        
-                            a[i] = aNew[i]; //replaces og Array with temp array sans "undefined"
-
-
-                        }
-                    
-                       
-    
-    
-    
+                        a[i] = tempArr[i]; //replaces a contents with temp Arr contents
+                        a.length = tempArr.length; //changes length to keep from getting undefined slots
                         
 
-                  
-                     i--;//to keep from deleting more than one item
-                   
+                        i--;//to keep from deleting more than one item
+
                 },'1000')
                 
                 
