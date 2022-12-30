@@ -51,7 +51,7 @@ pickButton.addEventListener('click',(e)=>{
     const item1 = document.querySelector('#item1');//li item 1
     const item2 = document.querySelector('#item2');// list item 2
     const exclaim = document.createElement('img');
-    exclaim.setAttribute('src','exclaim.png')
+    exclaim.setAttribute('src','exclaimPink.png')
 
     exclaim.style.width = '7%';
 

@@ -111,9 +111,13 @@ li .list-group-item{
 }
 
 #buttonCol button{
-    margin-right:80px;
+    /* margin-right:80px; */
 }
 
+
+.pickedTasks li{
+    list-style: none;
+}
 
 
 .line{
