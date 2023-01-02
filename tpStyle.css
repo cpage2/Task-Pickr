@@ -144,5 +144,25 @@ li .list-group-item{
 }
 
 
+.themeChanger{
+    text-align: center;
+    margin-top: 5%;
+    
+}
 
+.themeChanger h3 {
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    letter-spacing: 2px;
+    text-shadow: 5px 5px 5px #02020254;
+}
+
+#night{
+    margin-left:12px;
+    
+}
+
+.themeButtons{
+    margin-top: 20px;
+}
 
