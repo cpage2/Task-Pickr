@@ -154,11 +154,12 @@ li .list-group-item{
     color: white;
     font-family: 'Fredoka One', cursive;
     letter-spacing: 2px;
-    text-shadow: 5px 5px 5px #02020254;
+    text-shadow: 5px 5px 12px #02020254;
 }
 
 #night{
     margin-left:12px;
+    
     
 }
 
