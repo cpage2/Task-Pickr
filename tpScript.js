@@ -6,7 +6,9 @@ const hpItem = document.querySelector('#hpTask');//list item
 
 const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
-let task = '';
+let exclaim = document.createElement('img');
+exclaim.setAttribute('src','exclaimPink.png')
+let task = '';//just to check if deleted item is being pulled
 
 
 
@@ -50,8 +52,8 @@ pickButton.addEventListener('click',(e)=>{
 
     const item1 = document.querySelector('#item1');//li item 1
     const item2 = document.querySelector('#item2');// list item 2
-    const exclaim = document.createElement('img');
-    exclaim.setAttribute('src','exclaimPink.png')
+   
+    
 
     exclaim.style.width = '7%';
 
@@ -61,17 +63,85 @@ pickButton.addEventListener('click',(e)=>{
         item1.appendChild(exclaim);
 
     }else{
-        item1.innerHTML = "N/A";
+        item1.innerHTML = "";
     }
 
     if(lpPick != undefined){
         item2.innerHTML = lpPick;
     }else{
-        item2.innerHTML = "N/A"
+        item2.innerHTML = ""
     }
      
 
 })
+
+//Theme Changer
+const bubbleButton = document.querySelector('#bubbles');
+const nightButton = document.querySelector('#night');
+const footer = document.querySelector('footer');
+let bg = document.body;
+let line = document.querySelector('.line');
+
+
+
+
+//click and hover event for each button
+//current theme has faded button
+
+//mouseover then inner click event? 
+
+//if theme not current theme
+let nightColor = 'rgba(102, 113, 171, 0.8)';
+let bubbleColor = 'rgba(255, 167, 212, 0.8)';
+
+
+    
+    nightButton.addEventListener('click',(e)=>{
+        themeChanger("url('nightSky.jpg')",nightColor,'exclaimBlue.png' );//img url, line color, pickbutton color, exclaim attribute
+        footer.style.visibility = 'visible';
+
+       
+    
+    })
+    
+
+     nightButton.addEventListener('mouseenter', (e)=>{
+             nightButton.style.width = '110px';
+             nightButton.addEventListener('mouseout',(e)=>{
+                 nightButton.style.width = '100px';
+             })
+        
+     })
+
+
+
+    bubbleButton.addEventListener('click',(e)=>{
+        themeChanger("url('bubbles.png')",bubbleColor,'exclaimPink.png' );//img url, line color, pickbutton color, exclaim attribute
+        footer.style.visibility = 'hidden';
+    
+    })
+    
+     bubbleButton.addEventListener('mouseenter', (e)=>{
+             bubbleButton.style.width = '110px';
+             bubbleButton.addEventListener('mouseout',(e)=>{
+                 bubbleButton.style.width = '100px';
+             })
+        
+     })
+
+
+
+
+
+
+function themeChanger(bgImg, themeColor, exclaimImg){
+    bg.style.backgroundImage = bgImg; //will make generic
+    line.style.background = themeColor;
+    pickButton.style.backgroundColor = themeColor;
+    exclaim.setAttribute('src',exclaimImg);
+  
+
+}
 
 
 
@@ -95,7 +165,16 @@ pickButton.addEventListener('click',(e)=>{
 
         if(clickedBox != undefined || clickedBox != null){
             clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
-                clickedBox.setAttribute('src','CheckboxFill.png');
+
+                if(bg.style.backgroundImage = "url('nightSky.jpg')"){
+
+                    clickedBox.setAttribute('src', 'CheckboxNight.png');
+
+                }else{
+                    clickedBox.setAttribute('src','CheckboxFill.png');
+
+                }
+                
     
                 // Delayed remove of list item
                  setTimeout(()=>{ 
