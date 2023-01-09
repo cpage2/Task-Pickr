@@ -7,7 +7,7 @@ const hpItem = document.querySelector('#hpTask');//list item
 const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
 let exclaim = document.createElement('img');
-exclaim.setAttribute('src','exclaimPink.png')
+exclaim.setAttribute('src','exclaimPink.png')//highlight imp tasks
 let deletedTask = '';//just to check if deleted item is being pulled
 
 
@@ -96,7 +96,6 @@ line.id = 'pinkLine';
 
 //mouseover then inner click event? 
 
-//if theme not current theme
 let nightColor = 'rgba(102, 113, 171, 0.8)';
 let bubbleColor = "rgba(255, 167, 212, 0.8)";
 
@@ -226,7 +225,7 @@ function createList(listName,inputName,arrayName){
     chBoxFilled.setAttribute('src', 'CheckboxFill.png');
     chBoxFilled.style.width = '8%';
     
-    let List = document.querySelector(`div.${listName}`);//div
+    let List = document.querySelector(`div.${listName}`);
     
     let label = document.createElement('label');
 
