@@ -6,7 +6,9 @@ const hpItem = document.querySelector('#hpTask');//list item
 
 const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
-let task = '';
+let exclaim = document.createElement('img');
+exclaim.setAttribute('src','exclaimPink.png')
+let deletedTask = '';//just to check if deleted item is being pulled
 
 
 
@@ -50,8 +52,8 @@ pickButton.addEventListener('click',(e)=>{
 
     const item1 = document.querySelector('#item1');//li item 1
     const item2 = document.querySelector('#item2');// list item 2
-    const exclaim = document.createElement('img');
-    exclaim.setAttribute('src','exclaimPink.png')
+   
+    
 
     exclaim.style.width = '7%';
 
@@ -61,57 +63,146 @@ pickButton.addEventListener('click',(e)=>{
         item1.appendChild(exclaim);
 
     }else{
-        item1.innerHTML = "N/A";
+        item1.innerHTML = "";
     }
 
     if(lpPick != undefined){
         item2.innerHTML = lpPick;
     }else{
-        item2.innerHTML = "N/A"
+        item2.innerHTML = ""
     }
      
 
 })
 
+//Theme Changer
+const bubbleButton = document.querySelector('#bubbles');
+const nightButton = document.querySelector('#night');
+const footer = document.querySelector('footer');
+let bg = document.body;
+let line = document.querySelector('.line');
+let bubbleBG = "url('bubbles.png')";
+let nightBG = "url('nightSky.jpg')";
+let checkPink = 'CheckboxFill.png';
+let checkBlue = 'CheckboxNight.png';
+
+line.id = 'pinkLine';
+
+
+
+
+//click and hover event for each button
+//current theme has faded button
+
+//mouseover then inner click event? 
+
+//if theme not current theme
+let nightColor = 'rgba(102, 113, 171, 0.8)';
+let bubbleColor = "rgba(255, 167, 212, 0.8)";
+
+
+    
+    nightButton.addEventListener('click',(e)=>{
+        themeChanger(nightBG,nightColor,'exclaimBlue.png', "blueLine" );//img url, line color, pickbutton color, exclaim attribute
+        footer.style.visibility = 'visible';
+
+       
+    
+    })
+    
+
+     nightButton.addEventListener('mouseenter', (e)=>{
+             nightButton.style.width = '110px';
+             nightButton.addEventListener('mouseout',(e)=>{
+                 nightButton.style.width = '100px';
+             })
+        
+     })
+
+
+
+    bubbleButton.addEventListener('click',(e)=>{
+        themeChanger(bubbleBG,bubbleColor,'exclaimPink.png', "pinkLine" );//img url, line color, pickbutton color, exclaim attribute
+        footer.style.visibility = 'hidden';
+    
+    })
+    
+     bubbleButton.addEventListener('mouseenter', (e)=>{
+             bubbleButton.style.width = '110px';
+             bubbleButton.addEventListener('mouseout',(e)=>{
+                 bubbleButton.style.width = '100px';
+             })
+        
+     })
+
+
+
+
+
+
+function themeChanger(bgImg, themeColor, exclaimImg, lineID){
+    
+    line.id = lineID;
+    bg.style.backgroundImage = bgImg;
+    line.style.background = themeColor;
+    pickButton.style.backgroundColor = themeColor;
+    exclaim.setAttribute('src',exclaimImg);
+    
+   
+
+}
+
 
 
 // functions for list creation and deletion
 
- function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes & delete functioning 
+ function IDsChecks(arrayName,taskItem,checkBox,label, hiLow){ //gives ids to new list items and checkboxes & delete functioning 
 
-     for(let i = 1; i <= a.length; i++){
-         b.id = `task${i}`;
-         c.id = `chbox${i}`;
-         d.id = `lb${i}`; 
+     for(let i = 1; i <= arrayName.length; i++){
+         taskItem.id = `task${i}`;
+         checkBox.id = `chbox${i}`;
+         label.id = `lb${i}`; 
         
         }
 
 
-     for(let i = 0; i < a.length; i++){
+     for(let i = 0; i < arrayName.length; i++){
 
         let clickedBox = document.querySelector(`div.${hiLow} #chbox${i+1}`);
         let listItem  = document.querySelector(`div.${hiLow} #task${i+1}`);
         let label = document.querySelector(`div.${hiLow} #lb${i+1}`);
 
         if(clickedBox != undefined || clickedBox != null){
+
+
+            
             clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
-                clickedBox.setAttribute('src','CheckboxFill.png');
-    
-                // Delayed remove of list item
-                 setTimeout(()=>{ 
-                    listItem.remove();
-                    task = label.innerHTML;
 
-                        let tempArr = a.filter(item => item !== task);
-    
-                        a[i] = tempArr[i]; //replaces a contents with temp Arr contents
-                        a.length = tempArr.length; //changes length to keep from getting undefined slots
+                       
+                        if(line.id == "pinkLine"){
+                            clickedBox.setAttribute('src', checkPink);
+
+                        }else{
+                            clickedBox.setAttribute('src', checkBlue);
+
+                        }
                         
+    
+                        // Delayed remove of list item
+                        setTimeout(()=>{ 
+                            listItem.remove();
+                            deletedTask = label.innerHTML;
 
-                        i--;//to keep from deleting more than one item
+                                let tempArr = arrayName.filter(item => item !== deletedTask);
+            
+                                arrayName[i] = tempArr[i]; //replaces a contents with temp Arr contents
+                                arrayName.length = tempArr.length; //changes length to keep from getting undefined slots
+                                
 
-                },'1000')
-                
+                                i--;//to keep from deleting more than one item
+
+                        },'1000')
+                        
                 
                
              })  
@@ -156,7 +247,9 @@ function createList(listName,inputName,arrayName){
    
     inputName.value = "";//resets input value
 
-     IDsChecks(arrayName,newListItem,chBox,label,listName);
+    
+        IDsChecks(arrayName,newListItem,chBox,label,listName);
+ 
 
 }
 

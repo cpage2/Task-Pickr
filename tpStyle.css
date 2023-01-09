@@ -5,6 +5,8 @@ body{
     background-size: cover;
 }
 
+
+
 /* Menu & Title */
 .nav{
     padding: 0;
@@ -86,11 +88,11 @@ li .list-group-item{
 
 .list-group-item label{
     padding-left: 2px ;
+    color: white;
 }
 
 .pick{
     background-color: rgba(255, 167, 212, 0.8);
-    /* background-color:rgba(167, 254, 255, 0.8); */
     border-radius: 6px;
     padding: 1px 8px 4px 8px;
     font-weight: 700;
@@ -110,19 +112,20 @@ li .list-group-item{
    
 }
 
-#buttonCol button{
+/* #buttonCol button{
     /* margin-right:80px; */
-}
+/* } */ 
 
 
 .pickedTasks li{
     list-style: none;
+    color: white;
 }
 
 
 .line{
     height: 4px;
-    background:rgba(255, 171, 197, 0.7);
+    background:rgba(255, 167, 212, 0.8);
     margin-top: 10px;
 }
 
@@ -144,5 +147,48 @@ li .list-group-item{
 }
 
 
+.themeChanger{
+    text-align: center;
+    margin-top: 5%;
+    
+}
+
+.themeChanger h3 {
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    letter-spacing: 2px;
+    text-shadow: 5px 5px 12px #02020254;
+}
 
 
+
+#night{
+    margin-left:12px;
+    
+    
+}
+
+
+
+.themeButtons{
+    margin-top: 20px;
+}
+
+#credit{
+    text-align: center;
+    color: white;
+    
+    
+}
+
+#credit a{
+    color: white;
+}
+
+footer{
+    position: fixed;
+   bottom: 0;
+   width: 100%;
+   visibility: hidden;
+
+}
