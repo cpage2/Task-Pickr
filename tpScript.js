@@ -8,7 +8,7 @@ const lpInput = document.querySelector('#lp'); // hp input value
 const lpItem = document.querySelector('#lpTask');//list item
 let exclaim = document.createElement('img');
 exclaim.setAttribute('src','exclaimPink.png')
-let task = '';//just to check if deleted item is being pulled
+let deletedTask = '';//just to check if deleted item is being pulled
 
 
 
@@ -81,6 +81,12 @@ const nightButton = document.querySelector('#night');
 const footer = document.querySelector('footer');
 let bg = document.body;
 let line = document.querySelector('.line');
+let bubbleBG = "url('bubbles.png')";
+let nightBG = "url('nightSky.jpg')";
+let checkPink = 'CheckboxFill.png';
+let checkBlue = 'CheckboxNight.png';
+
+line.id = 'pinkLine';
 
 
 
@@ -92,12 +98,12 @@ let line = document.querySelector('.line');
 
 //if theme not current theme
 let nightColor = 'rgba(102, 113, 171, 0.8)';
-let bubbleColor = 'rgba(255, 167, 212, 0.8)';
+let bubbleColor = "rgba(255, 167, 212, 0.8)";
 
 
     
     nightButton.addEventListener('click',(e)=>{
-        themeChanger("url('nightSky.jpg')",nightColor,'exclaimBlue.png' );//img url, line color, pickbutton color, exclaim attribute
+        themeChanger(nightBG,nightColor,'exclaimBlue.png', "blueLine" );//img url, line color, pickbutton color, exclaim attribute
         footer.style.visibility = 'visible';
 
        
@@ -116,7 +122,7 @@ let bubbleColor = 'rgba(255, 167, 212, 0.8)';
 
 
     bubbleButton.addEventListener('click',(e)=>{
-        themeChanger("url('bubbles.png')",bubbleColor,'exclaimPink.png' );//img url, line color, pickbutton color, exclaim attribute
+        themeChanger(bubbleBG,bubbleColor,'exclaimPink.png', "pinkLine" );//img url, line color, pickbutton color, exclaim attribute
         footer.style.visibility = 'hidden';
     
     })
@@ -134,12 +140,15 @@ let bubbleColor = 'rgba(255, 167, 212, 0.8)';
 
 
 
-function themeChanger(bgImg, themeColor, exclaimImg){
-    bg.style.backgroundImage = bgImg; //will make generic
+function themeChanger(bgImg, themeColor, exclaimImg, lineID){
+    
+    line.id = lineID;
+    bg.style.backgroundImage = bgImg;
     line.style.background = themeColor;
     pickButton.style.backgroundColor = themeColor;
     exclaim.setAttribute('src',exclaimImg);
-  
+    
+   
 
 }
 
@@ -147,50 +156,53 @@ function themeChanger(bgImg, themeColor, exclaimImg){
 
 // functions for list creation and deletion
 
- function IDsChecks(a,b,c,d, hiLow){ //gives ids to new list items and checkboxes & delete functioning 
+ function IDsChecks(arrayName,taskItem,checkBox,label, hiLow){ //gives ids to new list items and checkboxes & delete functioning 
 
-     for(let i = 1; i <= a.length; i++){
-         b.id = `task${i}`;
-         c.id = `chbox${i}`;
-         d.id = `lb${i}`; 
+     for(let i = 1; i <= arrayName.length; i++){
+         taskItem.id = `task${i}`;
+         checkBox.id = `chbox${i}`;
+         label.id = `lb${i}`; 
         
         }
 
 
-     for(let i = 0; i < a.length; i++){
+     for(let i = 0; i < arrayName.length; i++){
 
         let clickedBox = document.querySelector(`div.${hiLow} #chbox${i+1}`);
         let listItem  = document.querySelector(`div.${hiLow} #task${i+1}`);
         let label = document.querySelector(`div.${hiLow} #lb${i+1}`);
 
         if(clickedBox != undefined || clickedBox != null){
+
+
+            
             clickedBox.addEventListener('click', (e)=>{ //clicked box gets filled then item disappears
 
-                if(bg.style.backgroundImage = "url('nightSky.jpg')"){
+                       
+                        if(line.id == "pinkLine"){
+                            clickedBox.setAttribute('src', checkPink);
 
-                    clickedBox.setAttribute('src', 'CheckboxNight.png');
+                        }else{
+                            clickedBox.setAttribute('src', checkBlue);
 
-                }else{
-                    clickedBox.setAttribute('src','CheckboxFill.png');
-
-                }
-                
-    
-                // Delayed remove of list item
-                 setTimeout(()=>{ 
-                    listItem.remove();
-                    task = label.innerHTML;
-
-                        let tempArr = a.filter(item => item !== task);
-    
-                        a[i] = tempArr[i]; //replaces a contents with temp Arr contents
-                        a.length = tempArr.length; //changes length to keep from getting undefined slots
+                        }
                         
+    
+                        // Delayed remove of list item
+                        setTimeout(()=>{ 
+                            listItem.remove();
+                            deletedTask = label.innerHTML;
 
-                        i--;//to keep from deleting more than one item
+                                let tempArr = arrayName.filter(item => item !== deletedTask);
+            
+                                arrayName[i] = tempArr[i]; //replaces a contents with temp Arr contents
+                                arrayName.length = tempArr.length; //changes length to keep from getting undefined slots
+                                
 
-                },'1000')
-                
+                                i--;//to keep from deleting more than one item
+
+                        },'1000')
+                        
                 
                
              })  
@@ -235,7 +247,9 @@ function createList(listName,inputName,arrayName){
    
     inputName.value = "";//resets input value
 
-     IDsChecks(arrayName,newListItem,chBox,label,listName);
+    
+        IDsChecks(arrayName,newListItem,chBox,label,listName);
+ 
 
 }
 
