@@ -98,19 +98,14 @@ line.id = 'pinkLine';
 
 let nightColor = 'rgba(102, 113, 171, 0.8)';
 let bubbleColor = "rgba(255, 167, 212, 0.8)";
-let width = innerWidth;
+
     
     nightButton.addEventListener('click',(e)=>{
 
         themeChanger(nightBG,nightColor,'exclaimBlue.png', "blueLine" );//img url, line color, pickbutton color, exclaim attribute
         footer.style.visibility = 'visible';
-        if(width > 1000){
-            bg.style.backgroundSize = "200%";
-        }
-
+      
        
-
-    
     })
     
 
@@ -121,6 +116,9 @@ let width = innerWidth;
              })
         
      })
+
+
+
 
 
 
@@ -147,7 +145,7 @@ let width = innerWidth;
 function themeChanger(bgImg,themeColor, exclaimImg, lineID){
     
     line.id = lineID;
-     bg.style.backgroundImage = bgImg;
+    bg.style.backgroundImage = bgImg;
     line.style.background = themeColor;
     pickButton.style.backgroundColor = themeColor;
     exclaim.setAttribute('src',exclaimImg);
