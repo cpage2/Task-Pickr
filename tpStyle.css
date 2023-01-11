@@ -195,6 +195,13 @@ footer{
 }
 
 /* Mobile */
+@media(max-width: 1000px) {
+    body{
+        background-size: 200%;
+    }
+
+   
+}
 
 @media(min-width:800px) and (max-width: 992px) {
     .col-md{
@@ -224,7 +231,7 @@ footer{
 
 @media(max-width: 400px) {
     body{
-        background-size: auto !important;
+        background-size: 500% !important;
 
     }
   
