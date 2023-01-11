@@ -195,9 +195,9 @@ footer{
 }
 
 /* Mobile */
-@media(max-width: 1000px) {
+@media(min-width: 1000px) {
     body{
-        background-size: 200%;
+        background-size: 120% !important;
     }
 
    
