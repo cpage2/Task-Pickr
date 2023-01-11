@@ -82,7 +82,7 @@ const footer = document.querySelector('footer');
 let bg = document.body;
 let line = document.querySelector('.line');
 let bubbleBG = "url('bubbles.png')";
-let nightBG = "url('nightSky.jpg')";
+let nightBG = "url('night2.jpg')";
 let checkPink = 'CheckboxFill.png';
 let checkBlue = 'CheckboxNight.png';
 
@@ -98,14 +98,18 @@ line.id = 'pinkLine';
 
 let nightColor = 'rgba(102, 113, 171, 0.8)';
 let bubbleColor = "rgba(255, 167, 212, 0.8)";
-
-
+let width = innerWidth;
     
     nightButton.addEventListener('click',(e)=>{
+
         themeChanger(nightBG,nightColor,'exclaimBlue.png', "blueLine" );//img url, line color, pickbutton color, exclaim attribute
         footer.style.visibility = 'visible';
+        if(width > 1000){
+            bg.style.backgroundSize = "200%";
+        }
 
        
+
     
     })
     
@@ -121,9 +125,10 @@ let bubbleColor = "rgba(255, 167, 212, 0.8)";
 
 
     bubbleButton.addEventListener('click',(e)=>{
+       
         themeChanger(bubbleBG,bubbleColor,'exclaimPink.png', "pinkLine" );//img url, line color, pickbutton color, exclaim attribute
         footer.style.visibility = 'hidden';
-    
+       
     })
     
      bubbleButton.addEventListener('mouseenter', (e)=>{
@@ -139,13 +144,16 @@ let bubbleColor = "rgba(255, 167, 212, 0.8)";
 
 
 
-function themeChanger(bgImg, themeColor, exclaimImg, lineID){
+function themeChanger(bgImg,themeColor, exclaimImg, lineID){
     
     line.id = lineID;
-    bg.style.backgroundImage = bgImg;
+     bg.style.backgroundImage = bgImg;
     line.style.background = themeColor;
     pickButton.style.backgroundColor = themeColor;
     exclaim.setAttribute('src',exclaimImg);
+
+    
+       
     
    
 
