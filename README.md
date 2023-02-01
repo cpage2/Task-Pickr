@@ -29,5 +29,5 @@ Sometimes when items from the Low Priority list are deleted before High Priority
 
 
 <img src ="/bubbleList.png" height = "400">
-<img src ="/Night Theme.PNG" height = "400">
+<img src ="/nightTheme.PNG" height = "400">
 
