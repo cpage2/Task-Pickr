@@ -1,7 +1,7 @@
 # Task-Pickr
 Todo List & Picker
 
-Live Demo: 
+Live Demo: https://cpage2.github.io/Task-Pickr/
 
 ![Alt text](/Images/Bubbles%20Theme.PNG)
 
@@ -10,8 +10,6 @@ Project is a todo list that allows users to input tasks based on their choice of
 
 There are two themes: Bubbles and Night
 Checkboxes are filled with corresponding colors along with the "High Priority" exclaim symbol, line, and "pick" button.
-
-
 
 
 # Technologies Used
